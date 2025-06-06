@@ -9,4 +9,7 @@
   },
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "liveServer.settings.port": 5501,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
