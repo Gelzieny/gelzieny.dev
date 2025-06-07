@@ -6,7 +6,6 @@ import { Header } from "./components/header";
 import { BlobBackground } from "./components/background";
 import { ThemeProvider } from "./components/theme_provider";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
