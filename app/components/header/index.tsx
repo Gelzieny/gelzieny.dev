@@ -10,6 +10,8 @@ import { Moon, Sun } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
+  { label: "Skills", href: "#skills" },
+  { label: "Sobre", href: "#sobre" },
   { label: "Projetos", href: "/projects" },
   { label: "Contatos", href: "/contact" },
 ];
