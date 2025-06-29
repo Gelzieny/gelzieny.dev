@@ -2,6 +2,7 @@ import "@/styles/home.css";
 
 import { Data } from "./data";
 import { Social } from "./social";
+import { ScrollDown } from "../scrollDown";
 
 export function HomePage() {
 	return (
@@ -14,6 +15,7 @@ export function HomePage() {
 
 					<div className="home__img" />
 				</div>
+				<ScrollDown />
 			</div>
 		</section>
 	);

@@ -4,7 +4,7 @@ export function Data() {
 	return (
 		<div className="home__data">
 			<h1 className="home__title">
-				Gelzieny R. Martins
+				Gelzieny Martins
 				<img src="/icons/hand.svg" alt="" />
 			</h1>
 
