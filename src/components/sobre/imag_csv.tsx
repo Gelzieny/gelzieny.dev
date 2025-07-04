@@ -1,5 +1,8 @@
-<svg
-			class="button__icon"
+import "@/styles/sobre.css";
+export function ImageCsv() {
+	return (
+		<svg
+			className="button__icon"
 			xmlns="http://www.w3.org/2000/svg"
 			width="24"
 			height="24"
@@ -23,3 +26,5 @@
 				fill="var(--container-color)"
 			></path>
 		</svg>
+	);
+}

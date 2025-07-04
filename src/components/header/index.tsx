@@ -1,13 +1,13 @@
 "use client";
 
-import { IoHome, IoPerson, IoMail } from "react-icons/io5";
-import { NavLink } from "../nav_link";
 import { useEffect, useState } from "react";
-import { FaRegFileAlt, FaTimes } from "react-icons/fa";
 import { FaRegImages } from "react-icons/fa6";
 import { AiOutlineAppstore } from "react-icons/ai";
+import { FaRegFileAlt, FaTimes } from "react-icons/fa";
+import { IoHome, IoPerson, IoMail } from "react-icons/io5";
 
 import "@/styles/header.css";
+import { NavLink } from "../nav_link";
 
 const navItems = [
 	{ icon: IoHome, label: "Home", href: "#home" },
