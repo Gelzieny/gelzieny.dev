@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/context";
+import { Header } from "@/components/header";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,6 +30,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${inter.variable} ${plexMono.variable}`}>
         <ThemeProvider>
+          <Header />
           {children}
         </ThemeProvider>
       </body>
