@@ -9,15 +9,16 @@ type NavItemProps = {
 
 export function NavItem({ href, label }: NavItemProps){
   const pathname = usePathname()
-
   const isActive = pathname === href
 
-  return(
+  return (
     <Link
       href={href}
       className={cn(
-        'text-gray-400 flex items-center gap-2 font-medium font-mono',
-        isActive && 'text-gray-50',
+        "flex items-center gap-2 font-medium font-mono",
+        "text-gray-600 dark:text-gray-400",  
+        "hover:text-gray-900 dark:hover:text-white",
+        isActive && "text-black dark:text-white"
       )}
     >
       <span className="text-purple-600">#</span>
