@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
+
 import "./globals.css";
+import { ThemeProvider } from "@/components/context";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -10,10 +12,8 @@ const inter = Inter({
 const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
-   weight: ['400', '500'],
+  weight: ["400", "500"],
 });
-
-
 
 export const metadata: Metadata = {
   title: "gelzieny.dev — Desenvolvedora Full Stack",
@@ -28,7 +28,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable} ${plexMono.variable}`}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
