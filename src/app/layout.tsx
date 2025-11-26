@@ -4,7 +4,7 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/context";
 import { Header } from "@/components/header";
-import { BubblesBackground } from "@/components/bubblesBackground";
+import { BubblesBackground } from "@/components/bubbles-background";
 
 const inter = Inter({
   variable: "--font-inter",

@@ -2,9 +2,8 @@
 import { useState, useEffect } from "react";
 
 const WORDS = [
+  "Software Developer",
   "Full Stack Developer",
-  "Creative Frontend Engineer",
-  "Backend API Architect",
 ];
 
 export function AnimatedText() {
@@ -33,7 +32,7 @@ export function AnimatedText() {
   }, [subIndex, deleting, index]);
 
   return (
-    <span className="text-white dark:text-white font-bold lg:text-[70px]">
+    <span className="text-white dark:text-white font-bold lg:text-[20px]">
       {WORDS[index].substring(0, subIndex)}
       <span className="border-r-2 border-white ml-1 animate-pulse"></span>
     </span>
