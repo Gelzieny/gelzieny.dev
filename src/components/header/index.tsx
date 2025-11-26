@@ -1,44 +1,26 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
-
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "../context";
 import Link from "next/link";
 import { NavItem } from "./nav-item";
-
+import { useState } from "react";
 
 const NAV_ITEMS = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Sobre",
-    href: "/sobre",
-  },
-  {
-    label: "Projetos",
-    href: "/projetos",
-  },
-  {
-    label: "Experiência",
-    href: "/experiencia",
-  },
-  {
-    label: "Certificados",
-    href: "/certificados",
-  },
-  {
-    label: "Contato",
-    href: "/contato",
-  },
-]
+  { label: "Home", href: "/" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Projetos", href: "/projetos" },
+  { label: "Experiência", href: "/experiencia" },
+  { label: "Certificados", href: "/certificados" },
+  { label: "Contato", href: "/contato" },
+];
 
 export function Header() {
   const { theme, toggleTheme } = useTheme();
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full">
+    <header className="w-full border-b border-gray-200 dark:border-gray-800">
       <div className="container flex items-center justify-between py-4 px-4">
 
         <Link
@@ -48,13 +30,13 @@ export function Header() {
           &lt;Gelzieny.dev/&gt;
         </Link>
 
-        <div className="flex items-center gap-4 sm:gap-6">
+        <nav className="hidden lg:flex items-center gap-6">
+          {NAV_ITEMS.map((item) => (
+            <NavItem key={item.href} {...item} />
+          ))}
+        </nav>
 
-          <nav className="flex items-center gap-3 sm:gap-6">
-            {NAV_ITEMS.map((item) => (
-              <NavItem key={item.href} {...item} />
-            ))}
-          </nav>
+        <div className="flex items-center gap-3">
 
           <button
             onClick={toggleTheme}
@@ -62,8 +44,25 @@ export function Header() {
           >
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </button>
+
+          <button
+            className="lg:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      {open && (
+        <nav className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+          <div className="container flex flex-col py-4 gap-4">
+            {NAV_ITEMS.map((item) => (
+              <NavItem key={item.href} {...item} />
+            ))}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

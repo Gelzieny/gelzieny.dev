@@ -12,23 +12,33 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light"); // default seguro no SSR
+  const [theme, setTheme] = useState<Theme>("light"); // evita flash no SSR
 
-  // Carrega o tema do localStorage no cliente
+  // Carrega tema salvo ou do sistema
   useEffect(() => {
     const stored = localStorage.getItem("theme") as Theme | null;
-
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     const initial = stored ?? (prefersDark ? "dark" : "light");
 
     setTheme(initial);
-    document.documentElement.classList.toggle("dark", initial === "dark");
+
+    // APLICA MANUALMENTE
+    if (initial === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
 
-  // Salva + aplica novo tema
+  // Atualiza sempre que mudar
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
     localStorage.setItem("theme", theme);
   }, [theme]);
 
@@ -44,7 +54,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useTheme() {
-  const ctx = useContext(ThemeContext);
-  if (!ctx) throw new Error("useTheme must be used within a ThemeProvider");
-  return ctx;
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error("useTheme must be used within a ThemeProvider");
+  return context;
 }

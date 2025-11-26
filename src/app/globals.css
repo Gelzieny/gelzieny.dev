@@ -16,6 +16,16 @@
   }
 }
 
+@layer utilities {
+  .bg-hero-image {
+    background-image: url("/Vector-dark.svg");
+  }
+
+  .dark .bg-hero-image {
+    background-image: url("/Vector-light.svg");
+  }
+}
+
 .container {
   @apply mx-auto w-full max-w-[1200px] px-6
 }
