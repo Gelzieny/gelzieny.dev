@@ -7,12 +7,12 @@ import { NavItem } from "./nav-item";
 import { useState } from "react";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "/" },
-  { label: "Sobre", href: "/sobre" },
-  { label: "Projetos", href: "/projetos" },
-  { label: "Experiência", href: "/experiencia" },
-  { label: "Certificados", href: "/certificados" },
-  { label: "Contato", href: "/contato" },
+  { label: "Home", href: "#hero" },
+  { label: "Sobre", href: "#sobre" },
+  { label: "Projetos", href: "#projetos" },
+  { label: "Experiência", href: "#experiencia" },
+  { label: "Certificados", href: "#certificados" },
+  { label: "Contato", href: "#contato" },
 ];
 
 export function Header() {
@@ -20,7 +20,9 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-gray-200 dark:border-gray-800">
+    <header
+      className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
+    >
       <div className="container flex items-center justify-between py-4 px-4">
 
         <Link
@@ -37,7 +39,6 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-
           <button
             onClick={toggleTheme}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"

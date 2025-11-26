@@ -4,18 +4,12 @@ import Image from "next/image";
 
 export function AboutMe() {
   return (
-    <section className="container py-16">
+    <section id="sobre" className="container py-16">
       <SectionTitle subtitle="sobre" title="Sobre mim" />
 
       <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(264px,1fr))] gap-6 mt-12">
         <div className="flex justify-center lg:justify-start">
-          <div className="
-            w-[250px] h-[250px]
-            sm:w-[300px] sm:h-[300px]
-            lg:w-[360px] lg:h-[360px]
-            rounded-xl overflow-hidden shadow-xl
-            bg-neutral-800/30 dark:bg-neutral-700/30
-          ">
+          <div className=" w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[360px] lg:h-[360px] rounded-xl overflow-hidden shadow-xl bg-neutral-800/30 dark:bg-neutral-700/30">
             <Image
               src="https://avatars.githubusercontent.com/u/19843798?size=500"
               alt="Foto de Perfil"

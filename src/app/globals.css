@@ -56,6 +56,6 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #FFB400;
+  background-color: var(--color-purple-500);
   border-radius: 14px;
 }
