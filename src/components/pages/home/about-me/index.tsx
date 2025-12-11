@@ -17,7 +17,7 @@ export function AboutMe() {
         <div className="flex justify-center lg:justify-start">
           <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[360px] lg:h-[360px] rounded-xl overflow-hidden shadow-xl bg-neutral-800/30 dark:bg-neutral-700/30">
             <Image
-              src="https://avatars.githubusercontent.com/u/19843798?size=500"
+              src="/images/profile.jpg"
               alt="Foto de Perfil"
               width={500}
               height={500}
@@ -28,20 +28,34 @@ export function AboutMe() {
 
         <div className="flex flex-col justify-center text-center lg:text-left">
           <p className="mt-2 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl text-justify">
-            Sou <span className="font-semibold text-gray-900 dark:text-white">Gelzieny R. Martins</span>, desenvolvedora
-            <span className="font-semibold"> Full Stack</span> com foco em 
-            <span className="font-semibold text-purple-500"> React, Next.js, TypeScript</span> e 
-            <span className="font-semibold text-purple-500"> Python / FastAPI</span>.
+            Sou{" "}
+            <span className="font-semibold text-gray-900 dark:text-white">
+              Gelzieny R. Martins
+            </span>
+            , desenvolvedora
+            <span className="font-semibold"> Full Stack</span> com foco em
+            <span className="font-semibold text-purple-500">
+              {" "}
+              React, Next.js, TypeScript
+            </span>{" "}
+            e
+            <span className="font-semibold text-purple-500">
+              {" "}
+              Python / FastAPI
+            </span>
+            .
           </p>
 
           <p className="mt-2 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl text-justify">
-            Atuo na <span className="font-semibold text-purple-500">LIGO</span>, laboratório de inovação do Governo de Goiás,
-            desenvolvendo APIs, automatizações com IA, dashboards e soluções digitais modernas.
+            Atuo na <span className="font-semibold text-purple-500">LIGO</span>,
+            laboratório de inovação do Governo de Goiás, desenvolvendo APIs,
+            automatizações com IA, dashboards e soluções digitais modernas.
           </p>
 
           <p className="mt-2 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl text-justify">
-            Tenho mais de 5 anos de experiência criando sistemas eficientes, acessíveis e orientados ao impacto real
-            em pessoas, equipes e serviços públicos.
+            Tenho mais de 5 anos de experiência criando sistemas eficientes,
+            acessíveis e orientados ao impacto real em pessoas, equipes e
+            serviços públicos.
           </p>
 
           <div className="mt-10">
@@ -51,7 +65,12 @@ export function AboutMe() {
 
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               {userTechnologies.map(({ name }, index) => (
-                <ToolIconsGrid key={name} name={name} index={index} animationDelay={0.15} />
+                <ToolIconsGrid
+                  key={name}
+                  name={name}
+                  index={index}
+                  animationDelay={0.15}
+                />
               ))}
             </div>
           </div>

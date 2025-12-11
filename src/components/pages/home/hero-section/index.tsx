@@ -4,9 +4,11 @@ import Image from "next/image";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative w-full min-h-screen lg:min-h-[670px] flex items-center py-16 sm:py-20 lg:py-28">
+    <section
+      id="hero"
+      className="relative w-full min-h-screen lg:min-h-[670px] flex items-center py-16 sm:py-20 lg:py-28"
+    >
       <div className="container flex flex-col-reverse lg:flex-row items-center justify-between gap-20">
-
         <div className="flex-1 text-center lg:text-left">
           <h2 className=" text-3xl sm:text-4xl md:text-5xl lg:text-[70px] font-extrabold leading-tight">
             <AnimatedText />
@@ -16,16 +18,13 @@ export function HeroSection() {
               Hello, I'm
             </span>
           </h1>
-          
-          <h1
-            className="whitespace-nowrap text-3xl sm:text-5xl md:text-6xl lg:text-[60px] font-extrabold text-gray-900 dark:text-white"
-          >
+
+          <h1 className="whitespace-nowrap text-3xl sm:text-5xl md:text-6xl lg:text-[60px] font-extrabold text-gray-900 dark:text-white">
             <span>Gelzieny R. Martins</span>
           </h1>
 
-
           <p className="mt-5 text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
-            Desenvolvedora Full Stack especializada em React, Next.js, Python,  
+            Desenvolvedora Full Stack especializada em React, Next.js, Python,
             APIs e soluções modernas para o setor público.
           </p>
 
@@ -34,19 +33,16 @@ export function HeroSection() {
               Hire Me
             </Button>
 
-
             <Button className="border border-pink-500 text-pink-500 text-sm sm:text-base hover:bg-pink-500 hover:text-white transition-all duration-300">
               Download CV
             </Button>
-
           </div>
         </div>
 
         <div className="flex-1 flex justify-center lg:justify-end">
-
-          <div className="w-[220px] h-[220px] lg:w-[350px] lg:h-[350px] rounded-full overflow-hidden bg-neutral-800/40 flex items-center justify-center">
+          <div className="w-[220px] h-[220px] lg:w-[350px] lg:h-[350px] rounded-4xl overflow-hidden bg-neutral-800/40 flex items-center justify-center">
             <Image
-              src="https://avatars.githubusercontent.com/u/19843798?size=500"
+              src="/images/user.jpg"
               alt="Foto de Perfil"
               width={350}
               height={350}
