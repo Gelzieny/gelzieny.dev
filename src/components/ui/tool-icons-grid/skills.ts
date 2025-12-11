@@ -1,4 +1,3 @@
 export function getSkillIconUrl(slug: string): string {
-  return `https://api.iconify.design/logos/${slug}.svg`;
+  return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${slug}/${slug}-original.svg`;
 }
-
