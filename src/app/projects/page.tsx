@@ -15,9 +15,8 @@ export default function ProjectsPage() {
   });
 
   return (
-    <div className="container py-20">
+    <div className="container pt-30 pb-20">
       <div className="max-w-4xl mx-auto text-center">
-        <p className="text-sm text-purple-400 font-mono">Soluções</p>
         <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white">
           Projetos <span className="text-blue-400">Rocketseat</span>
         </h1>

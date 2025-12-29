@@ -24,16 +24,7 @@ export const projects: Project[] = [
     github: "https://github.com/username/portfolio-site",
     live: "https://example.com",
   },
-  {
-    slug: "api-servicos",
-    title: "API de Serviços",
-    description: "API REST construída em Python com FastAPI e PostgreSQL.",
-    thumbnail: "/projects/api.jpg",
-    images: ["/projects/api-1.jpg"],
-    techs: ["python", "fastapi", "postgresql"],
-    type: "backend",
-    github: "https://github.com/username/api-servicos",
-  },
+
   {
     slug: "ecommerce-frontend",
     title: "E-commerce (Front)",
@@ -47,4 +38,4 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.slice(0, 3);
+export const featuredProjects = projects.slice(0, 2);

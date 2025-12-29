@@ -54,7 +54,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contato" className="container snap-start scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 min-h-screen pt-20  sm:pt-24  lg:pt-28">
+    <section id="contato" className="container snap-start scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 pt-12 sm:pt-16 lg:pt-20 pb-12">
 
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <div>
