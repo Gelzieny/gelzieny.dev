@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/context";
 import { Header } from "@/components/header";
 import { BubblesBackground } from "@/components/bubbles-background";
+import { Contact } from "@/components/pages/home/contact";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,11 +30,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.variable} ${plexMono.variable} snap-y snap-mandatory overflow-y-auto`}>
+      <body
+        className={`${inter.variable} ${plexMono.variable} snap-y snap-mandatory overflow-y-auto`}
+        style={{ scrollPaddingTop: "4rem" }}
+      >
         <ThemeProvider>
           <BubblesBackground />
           <Header />
           {children}
+          <Contact />
         </ThemeProvider>
       </body>
     </html>

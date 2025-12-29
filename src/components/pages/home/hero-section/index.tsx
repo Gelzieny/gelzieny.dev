@@ -6,7 +6,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="snap-start relative w-full min-h-screen lg:min-h-[670px] flex items-center pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-28"
+      className="snap-start scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 relative w-full min-h-screen lg:min-h-[670px] flex items-center pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-28"
     >
       <div className="container flex flex-col-reverse lg:flex-row items-center justify-between gap-20">
         <div className="flex-1 text-center lg:text-left">
