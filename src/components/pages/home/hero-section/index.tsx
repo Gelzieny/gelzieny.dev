@@ -1,6 +1,7 @@
 import { AnimatedText } from "@/components/animated-text";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -29,13 +30,20 @@ export function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-            <Button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm sm:text-base hover:opacity-90 hover:shadow-lg transition-all duration-300">
-              Hire Me
-            </Button>
+            <Link href="#contato">
+              <Button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm sm:text-base hover:opacity-90 hover:shadow-lg transition-all duration-300">
+                Entre em contato
+              </Button>
+            </Link>
 
-            <Button className="border border-pink-500 text-pink-500 text-sm sm:text-base hover:bg-pink-500 hover:text-white transition-all duration-300">
+            <a
+              href="/docs/doc.pdf"
+              download
+              className="inline-block text-center border border-pink-500 text-pink-500 text-sm sm:text-base hover:bg-pink-500 hover:text-white transition-all duration-300 px-6 py-3 rounded-full font-semibold"
+              aria-label="Download CV"
+            >
               Download CV
-            </Button>
+            </a>
           </div>
         </div>
 
