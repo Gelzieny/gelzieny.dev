@@ -3,7 +3,25 @@
 import Link from "next/link";
 import { useState } from "react";
 import { SectionTitle } from "@/components/ui/section-title";
-import { Github, Linkedin } from "lucide-react";
+import { ToolIconsGrid } from "@/components/ui/tool-icons-grid";
+
+import { Github, Linkedin, Instagram, Twitter } from "lucide-react";
+import Image from "next/image";
+
+// const redesSociais = [
+//   { name: "GitHub", icon: Github, link: "https://github.com/Gelzieny" },
+//   { name: "LinkedIn", icon: Linkedin, link: "https://www.linkedin.com/in/gelzieny" },
+//   { name: "Twitter / X", icon: Twitter, link: "https://x.com/GelzienyRM" },
+//   { name: "Instagram", icon: Instagram, link: "https://www.instagram.com/gelzieny/" },
+// ];
+
+const socialIcons = [
+  { name: "GitHub", slug: "/icons/github.svg", href: "https://github.com/gelzieny" },
+  { name: "LinkedIn", slug: "/icons/linkedin.svg", href: "https://linkedin.com/in/gelzieny" },
+  { name: "Instagram", slug: "/icons/instagram.svg", href: "https://instagram.com/gelzieny" },
+  { name: "Twitter / X", slug: "/icons/twitterx.svg", href: "https://x.com/GelzienyRM" },
+  { name: "WhatsApp", slug: "/icons/whatsapp.svg", href: "https://wa.me/5562981250240" },
+];
 
 export function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -37,22 +55,28 @@ export function Contact() {
 
   return (
     <section id="contato" className="container snap-start scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 min-h-screen pt-20  sm:pt-24  lg:pt-28">
-      <SectionTitle subtitle="contato" title="Vamos conversar" />
+
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <div>
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Vamos falar sobre oportunidades</h3>
           <p className="text-gray-700 dark:text-gray-300">Atualmente estou aberta a novas oportunidades e colaborações.</p>
           <p className="text-gray-700 dark:text-gray-300">Seja para tirar dúvidas, propor um projeto ou apenas dizer um <span className="font-bold text-purple-800 dark:text-purple-500">"olá"</span>, fique à vontade para entrar em contato — responderei o mais breve possível.</p>
 
-          <div className="mt-6 flex items-center gap-4">
-            <Link href="#" className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition">
-              <Github size={28} />
-            </Link>
-
-            <Link href="#" className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition">
-              <Linkedin size={28} />
-            </Link>
+          <div className="mt-6 flex items-center gap-3">
+            {socialIcons.map(({ name, slug, href }) => (
+              <a
+                key={slug}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative p-3 rounded-xl bg-white/5 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:bg-white/10"
+              >
+                <Image src={slug} width={40} height={40} alt={name} />
+                
+              </a>
+            ))}
           </div>
+
         </div>
 
         <form onSubmit={handleSubmit} className="w-full max-w-xl ml-auto">

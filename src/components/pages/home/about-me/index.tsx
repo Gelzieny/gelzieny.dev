@@ -69,6 +69,8 @@ export function AboutMe() {
                   key={name}
                   name={name}
                   index={index}
+                  iconWidth={50}
+                  iconHeight={50}
                   animationDelay={0.15}
                 />
               ))}

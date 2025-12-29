@@ -9,12 +9,16 @@ type TechBadgeProps = ComponentProps<"div"> & {
   name: string;
   index: number;
   animationDelay?: number;
+  iconWidth?: number;
+  iconHeight?: number;
 };
 
 export function ToolIconsGrid({
   name,
   index,
   animationDelay = 0.15,
+  iconWidth,
+  iconHeight,
   ...props
 }: TechBadgeProps) {
   const [mounted, setMounted] = useState(false);
@@ -45,8 +49,8 @@ export function ToolIconsGrid({
       <Image
         src={getSkillIconUrl(iconKey)}
         alt={displayName}
-        width={50}
-        height={50}
+        width={iconWidth}
+        height={iconHeight}
         className="object-contain"
         onError={(e) => {
           (e.target as HTMLImageElement).style.display = "none";
