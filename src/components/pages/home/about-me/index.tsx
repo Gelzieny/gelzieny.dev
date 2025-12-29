@@ -10,7 +10,7 @@ const userTechnologies = [
 
 export function AboutMe() {
   return (
-    <section id="sobre" className="container py-20">
+    <section id="sobre" className="container snap-start min-h-screen pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-28">
       <SectionTitle subtitle="sobre" title="Sobre mim" />
 
       <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(264px,1fr))] gap-6 mt-12">

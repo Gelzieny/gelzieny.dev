@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.variable} ${plexMono.variable}`}>
+      <body className={`${inter.variable} ${plexMono.variable} snap-y snap-mandatory overflow-y-auto`}>
         <ThemeProvider>
           <BubblesBackground />
           <Header />
