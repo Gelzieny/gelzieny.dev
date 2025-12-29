@@ -8,10 +8,7 @@ import { useState } from "react";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Projetos", href: "#projetos" },
-  { label: "Experiência", href: "#experiencia" },
-  { label: "Certificados", href: "#certificados" },
+  { label: "Projetos", href: "/projects" },
   { label: "Contato", href: "#contato" },
 ];
 
@@ -32,7 +29,7 @@ export function Header() {
           &lt;Gelzieny.dev/&gt;
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-6 lg:ml-auto lg:mr-6">
           {NAV_ITEMS.map((item) => (
             <NavItem key={item.href} {...item} />
           ))}
