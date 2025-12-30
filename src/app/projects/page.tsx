@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { projects } from "@/lib/projects";
 import { ProjectCard } from "@/components/pages/Projects/project-card";
-import { SectionTitle } from "@/components/ui/section-title";
 
 export default function ProjectsPage() {
   const [filter, setFilter] = useState<"all" | "frontend" | "backend">("all");
