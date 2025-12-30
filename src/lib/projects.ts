@@ -8,8 +8,8 @@ export type Project = {
   images?: string[];
   techs: string[];
   type: ProjectType;
-  github?: string;
-  live?: string;
+  githubUrl?: string;
+  liveProjectUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -21,8 +21,8 @@ export const projects: Project[] = [
     images: ["/projects/portfolio-1.jpg", "/projects/portfolio-2.jpg"],
     techs: ["nextjs", "react", "tailwindcss", "typescript"],
     type: "frontend",
-    github: "https://github.com/username/portfolio-site",
-    live: "https://example.com",
+    githubUrl: "https://github.com/username/portfolio-site",
+    liveProjectUrl: "https://example.com",
   },
 
   {
@@ -33,8 +33,8 @@ export const projects: Project[] = [
     images: ["/projects/shop-1.jpg"],
     techs: ["react", "zustand", "tailwindcss"],
     type: "frontend",
-    github: "https://github.com/username/ecommerce-frontend",
-    live: "https://shop.example.com",
+    githubUrl: "https://github.com/username/ecommerce-frontend",
+    liveProjectUrl: "https://shop.example.com",
   },
 ];
 
