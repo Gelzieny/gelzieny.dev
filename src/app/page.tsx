@@ -19,7 +19,7 @@ export default async function Home() {
         }}
       />
       <AboutMe data={page.aboutMe} />
-      <ProjectsSection />
+      <ProjectsSection data={page.highlightProjects} />
       <WorkExperience />
     </>
   )

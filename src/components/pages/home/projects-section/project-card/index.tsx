@@ -6,15 +6,19 @@ import { getSkillIconUrl } from "@/components/ui/tool-icons-grid/skills";
 
 import { Project } from "@/lib/projects";
 import { ArrowRight } from "lucide-react";
+import type { HighlightProject } from "@/lib/types/page-home";
+import { techIconMap } from "@/lib/iconMap";
 
-type Props = { project: Project };
+type Props = {
+  project: HighlightProject
+};
 
 export function HomeProjectCard({ project }: Props) {
   return (
     <article className="flex gap-6 lg:gap-10 flex-col lg:flex-row items-start">
       <div className="w-full h-[180px] sm:h-[240px] lg:w-[420px] lg:min-h-full rounded-lg overflow-hidden flex-shrink-0">
         <Image
-          src={project.thumbnail}
+          src={project.thumbnail.url}
           alt={`Thumbnail do projeto ${project.title}`}
           width={420}
           height={304}
@@ -28,21 +32,26 @@ export function HomeProjectCard({ project }: Props) {
           <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">{project.title}</h3>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 my-4 max-w-xl">{project.description}</p>
+        <p className="text-gray-600 dark:text-gray-300 my-4 max-w-xl">{project.shortDescription}</p>
 
         <div className="mt-3 flex items-center gap-3 flex-wrap">
-          {project.techs.map((tech, idx) => (
-            <img
-              key={tech}
-              src={getSkillIconUrl(tech)}
-              alt={tech}
-              width={28}
-              height={28}
-              style={{ animationDelay: `${idx * 0.06}s` }}
-              className="bg-white dark:bg-gray-900 rounded p-0.5 transform transition-all duration-300 hover:scale-110 animate-fade-up"
-            />
-          ))}
+          {project.technologies.map((tech, idx) => {
+            const iconKey = techIconMap[tech.name] || tech.name.toLowerCase();
+
+            return (
+              <img
+                key={tech.name}
+                src={getSkillIconUrl(iconKey)}
+                alt={tech.name}
+                width={28}
+                height={28}
+                style={{ animationDelay: `${idx * 0.06}s` }}
+                className="bg-white dark:bg-gray-900 rounded p-0.5 transform transition-all duration-300 hover:scale-110 animate-fade-up"
+              />
+            )
+          })}
         </div>
+
 
         <div className="mt-4">
           <Link

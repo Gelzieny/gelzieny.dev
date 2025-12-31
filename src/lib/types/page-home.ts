@@ -1,7 +1,3 @@
-// ==============================
-// Tipos auxiliares
-// ==============================
-
 export type RichTextContent = {
   raw: {
     children: any[]
@@ -12,15 +8,15 @@ export type ImageAsset = {
   url: string
 }
 
-// ==============================
-// Tipagem da Query MyQuery
-// ==============================
-
 export type HomeFunction = {
   name: string
 }
 
 export type AboutTechnology = {
+  name: string
+}
+
+export type ProjectTechnology = {
   name: string
 }
 
@@ -30,6 +26,14 @@ export type SocialMedia = {
   iconSvg: string
 }
 
+export type HighlightProject = {
+  slug: string
+  thumbnail: ImageAsset
+  title: string
+  description: RichTextContent
+  shortDescription: string
+  technologies: ProjectTechnology[]
+}
 
 export type HomeAboutMe = {
   profileAboutMe: ImageAsset
@@ -43,8 +47,8 @@ export type HomePage = {
   profilePicture: ImageAsset
   aboutMe: HomeAboutMe
   socialMedias: SocialMedia[]
+  highlightProjects: HighlightProject[]
 }
-
 
 export type HomePageResponse = {
   page: HomePage

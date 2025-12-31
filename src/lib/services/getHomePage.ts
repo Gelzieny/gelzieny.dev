@@ -30,6 +30,20 @@ export async function getHomePage() {
           name
           url
           iconSvg
+        }
+        highlightProjects {
+          slug
+          thumbnail {
+            url
+          }
+          title
+          description {
+            raw
+          }
+          shortDescription
+          technologies {
+            name
+          }
         }  
       }
     }

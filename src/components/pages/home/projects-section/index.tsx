@@ -4,8 +4,16 @@ import { featuredProjects } from "@/lib/projects";
 import { HorizontalDivider } from "@/components/ui/horizontal-diver";
 import { HomeProjectCard } from "./project-card";
 import { ArrowRight } from "lucide-react";
+import type { HighlightProject } from "@/lib/types/page-home";
 
-export function ProjectsSection() {
+
+export type ProjectsSectionProps = {
+  data: HighlightProject[]
+}
+
+
+export function ProjectsSection({ data }: ProjectsSectionProps) {
+  console.log(data);
   return (
     <section id="projects" className="py-12">
       <div className="container">
@@ -15,15 +23,13 @@ export function ProjectsSection() {
 
         <HorizontalDivider className="mb-10" />    
         <div className="mt-6 flex flex-col gap-8">
-          {featuredProjects?.map((project) => (
+          {data?.map((project) => (
             <div key={project.slug}>
               <HomeProjectCard project={project} />
               <HorizontalDivider className="mb-14" />
             </div>
           ))}
-        </div>
-
-        
+        </div>        
 
         <p className="flex items-center gap-1.5">
           <span className="text-gray-400">Se interessou?</span>
