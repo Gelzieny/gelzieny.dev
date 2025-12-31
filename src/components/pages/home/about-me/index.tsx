@@ -1,8 +1,9 @@
 import Image from "next/image";
+
+import { RichText } from "@/components/ui/rich-text";
+import type { AboutMeData } from "@/lib/types/about-me";
 import { SectionTitle } from "@/components/ui/section-title";
 import { ToolIconsGrid } from "@/components/ui/tool-icons-grid";
-import type { AboutMeData } from "@/lib/types/about-me";
-import { RichText } from "@/components/ui/rich-text";
 
 
 type AboutMeProps = {
@@ -11,7 +12,6 @@ type AboutMeProps = {
 
 
 export function AboutMe({ data }: AboutMeProps) {
-  console.log(data);
   return (
     <section id="sobre" className="container snap-start scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 py-12 sm:py-16">
       <SectionTitle subtitle="sobre" title="Sobre mim" />

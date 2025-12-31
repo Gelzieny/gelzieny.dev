@@ -26,6 +26,11 @@ export async function getHomePage() {
             name
           }
         }
+        socialMedias {
+          name
+          url
+          iconSvg
+        }  
       }
     }
   `

@@ -1,7 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { projects } from "@/lib/projects";
+import { useParams } from "next/navigation";
 import { ProjectDetails } from "@/components/pages/project/project-details";
 import { ProjectSections } from "@/components/pages/project/project-sections";
 

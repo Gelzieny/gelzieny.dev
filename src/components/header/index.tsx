@@ -1,10 +1,11 @@
 "use client";
 
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { useTheme } from "../context";
 import Link from "next/link";
-import { NavItem } from "./nav-item";
 import { useState } from "react";
+import { Moon, Sun, Menu, X } from "lucide-react";
+
+import { NavItem } from "./nav-item";
+import { useTheme } from "../context";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },

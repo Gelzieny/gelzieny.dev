@@ -5,8 +5,8 @@ import { useState } from "react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { ToolIconsGrid } from "@/components/ui/tool-icons-grid";
 
-import { Github, Linkedin, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
+import type { SocialMedia } from "@/lib/types/page-home";
 
 // const redesSociais = [
 //   { name: "GitHub", icon: Github, link: "https://github.com/Gelzieny" },
@@ -23,7 +23,12 @@ const socialIcons = [
   { name: "WhatsApp", slug: "/icons/whatsapp.svg", href: "https://wa.me/5562981250240" },
 ];
 
-export function Contact() {
+
+export type ContactProps = {
+  socialMedias: SocialMedia[]
+}
+
+export function Contact({ socialMedias }: ContactProps) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -63,20 +68,29 @@ export function Contact() {
           <p className="text-gray-700 dark:text-gray-300">Seja para tirar dúvidas, propor um projeto ou apenas dizer um <span className="font-bold text-purple-800 dark:text-purple-500">"olá"</span>, fique à vontade para entrar em contato — responderei o mais breve possível.</p>
 
           <div className="mt-6 flex items-center gap-3">
-            {socialIcons.map(({ name, slug, href }) => (
+            {socialMedias.map(({ name, url, iconSvg }) => (
               <a
-                key={slug}
-                href={href}
+                key={name}
+                href={url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={name}
                 className="group relative p-3 rounded-xl bg-white/5 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:bg-white/10"
               >
-                <Image src={slug} width={40} height={40} alt={name} />
-                
+                <span
+                  className="
+                    w-8 h-8
+                    text-gray-700 dark:text-gray-300
+                    group-hover:text-purple-500
+                    transition-colors
+                    [&>svg]:w-full
+                    [&>svg]:h-full
+                  "
+                  dangerouslySetInnerHTML={{ __html: iconSvg }}
+                />
               </a>
             ))}
           </div>
-
         </div>
 
         <form onSubmit={handleSubmit} className="w-full max-w-xl ml-auto">

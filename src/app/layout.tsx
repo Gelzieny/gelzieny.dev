@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 
 import "./globals.css";
-import { ThemeProvider } from "@/components/context";
 import { Header } from "@/components/header";
-import { BubblesBackground } from "@/components/bubbles-background";
+import { ThemeProvider } from "@/components/context";
 import { Contact } from "@/components/pages/home/contact";
+import { BubblesBackground } from "@/components/bubbles-background";
+import { getHomePage } from "@/lib/services/getHomePage";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,11 +24,15 @@ export const metadata: Metadata = {
   description: "Portfólio de Gelzieny R. Martins, desenvolvedora full stack.",
 };
 
-export default function RootLayout({
+export default  async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { page } = await getHomePage()
+
+  console.log(page)
+  
   return (
     <html lang="pt-BR">
       <body
@@ -38,7 +43,7 @@ export default function RootLayout({
           <BubblesBackground />
           <Header />
           {children}
-          <Contact />
+          <Contact socialMedias={page.socialMedias}/>
         </ThemeProvider>
       </body>
     </html>

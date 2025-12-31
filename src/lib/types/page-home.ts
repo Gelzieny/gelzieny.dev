@@ -24,6 +24,13 @@ export type AboutTechnology = {
   name: string
 }
 
+export type SocialMedia = {
+  name: string
+  url: string
+  iconSvg: string
+}
+
+
 export type HomeAboutMe = {
   profileAboutMe: ImageAsset
   description: RichTextContent
@@ -35,7 +42,9 @@ export type HomePage = {
   introduction: RichTextContent
   profilePicture: ImageAsset
   aboutMe: HomeAboutMe
+  socialMedias: SocialMedia[]
 }
+
 
 export type HomePageResponse = {
   page: HomePage
