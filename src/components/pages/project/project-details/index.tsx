@@ -1,9 +1,9 @@
-import { RichText } from "@/components/ui/rich-text";
-import { SectionTitle } from "@/components/ui/section-title";
-import { getSkillIconUrl } from "@/components/ui/tool-icons-grid/skills";
-import { Project } from "@/lib/projects";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+
 import Link from "next/link";
+import { Project } from "@/lib/projects";
+import { SectionTitle } from "@/components/ui/section-title";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { getSkillIconUrl } from "@/components/ui/tool-icons-grid/skills";
 
 export function ProjectDetails({ project }: { project: Project }) {
   const backgroundImage = project.images?.[0] ?? project.thumbnail;

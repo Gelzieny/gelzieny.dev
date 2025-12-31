@@ -8,6 +8,7 @@ export type ImageAsset = {
   url: string
 }
 
+
 export type HomeFunction = {
   name: string
 }
@@ -41,6 +42,25 @@ export type HomeAboutMe = {
   aboutTechnologies: AboutTechnology[]
 }
 
+export type WorkSkillTechnology = {
+  name: string
+}
+
+export type WorkExperience = {
+  company: string
+  companyUrl: string
+  companyLogo: {
+    url: string
+  } | null
+  role: string
+  description: RichTextContent
+  skillsTechnologies: { name: string }[]
+  startDate: string
+  endDate: string | null
+  location: string
+}
+
+
 export type HomePage = {
   functions: HomeFunction[]
   introduction: RichTextContent
@@ -48,6 +68,7 @@ export type HomePage = {
   aboutMe: HomeAboutMe
   socialMedias: SocialMedia[]
   highlightProjects: HighlightProject[]
+  workExperiences: WorkExperience[]
 }
 
 export type HomePageResponse = {

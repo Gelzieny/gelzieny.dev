@@ -44,7 +44,24 @@ export async function getHomePage() {
           technologies {
             name
           }
-        }  
+        } 
+        workExperiences {
+          company
+          companyUrl
+          companyLogo {
+            url
+          }
+          role
+          description {
+            raw
+          }
+          skillsTechnologies {
+            name
+          }
+          startDate
+          endDate
+          location
+        }   
       }
     }
   `

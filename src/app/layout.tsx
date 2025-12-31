@@ -4,9 +4,9 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/context";
+import { getHomePage } from "@/lib/services/getHomePage";
 import { Contact } from "@/components/pages/home/contact";
 import { BubblesBackground } from "@/components/bubbles-background";
-import { getHomePage } from "@/lib/services/getHomePage";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,8 +30,6 @@ export default  async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { page } = await getHomePage()
-
-  console.log(page)
   
   return (
     <html lang="pt-BR">

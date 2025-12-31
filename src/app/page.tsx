@@ -7,8 +7,6 @@ import { ProjectsSection } from "@/components/pages/home/projects-section";
 export default async function Home() {
   const { page } = await getHomePage()
 
-  // console.log(page)
-
   return (
     <>
       <HeroSection
@@ -20,7 +18,7 @@ export default async function Home() {
       />
       <AboutMe data={page.aboutMe} />
       <ProjectsSection data={page.highlightProjects} />
-      <WorkExperience />
+      <WorkExperience data={page.workExperiences} />
     </>
   )
 }

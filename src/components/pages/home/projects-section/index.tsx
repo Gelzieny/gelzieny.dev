@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { SectionTitle } from "@/components/ui/section-title";
-import { featuredProjects } from "@/lib/projects";
-import { HorizontalDivider } from "@/components/ui/horizontal-diver";
-import { HomeProjectCard } from "./project-card";
 import { ArrowRight } from "lucide-react";
+
+import { HomeProjectCard } from "./project-card";
+import { SectionTitle } from "@/components/ui/section-title";
 import type { HighlightProject } from "@/lib/types/page-home";
+import { HorizontalDivider } from "@/components/ui/horizontal-diver";
 
 
 export type ProjectsSectionProps = {
@@ -13,7 +13,6 @@ export type ProjectsSectionProps = {
 
 
 export function ProjectsSection({ data }: ProjectsSectionProps) {
-  console.log(data);
   return (
     <section id="projects" className="py-12">
       <div className="container">

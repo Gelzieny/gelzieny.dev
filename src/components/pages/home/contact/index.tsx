@@ -1,27 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import { SectionTitle } from "@/components/ui/section-title";
-import { ToolIconsGrid } from "@/components/ui/tool-icons-grid";
-
-import Image from "next/image";
 import type { SocialMedia } from "@/lib/types/page-home";
-
-// const redesSociais = [
-//   { name: "GitHub", icon: Github, link: "https://github.com/Gelzieny" },
-//   { name: "LinkedIn", icon: Linkedin, link: "https://www.linkedin.com/in/gelzieny" },
-//   { name: "Twitter / X", icon: Twitter, link: "https://x.com/GelzienyRM" },
-//   { name: "Instagram", icon: Instagram, link: "https://www.instagram.com/gelzieny/" },
-// ];
-
-const socialIcons = [
-  { name: "GitHub", slug: "/icons/github.svg", href: "https://github.com/gelzieny" },
-  { name: "LinkedIn", slug: "/icons/linkedin.svg", href: "https://linkedin.com/in/gelzieny" },
-  { name: "Instagram", slug: "/icons/instagram.svg", href: "https://instagram.com/gelzieny" },
-  { name: "Twitter / X", slug: "/icons/twitterx.svg", href: "https://x.com/GelzienyRM" },
-  { name: "WhatsApp", slug: "/icons/whatsapp.svg", href: "https://wa.me/5562981250240" },
-];
 
 
 export type ContactProps = {

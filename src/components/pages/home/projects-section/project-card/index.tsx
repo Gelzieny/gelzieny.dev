@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { getSkillIconUrl } from "@/components/ui/tool-icons-grid/skills";
+import Image from "next/image";
 
-import { Project } from "@/lib/projects";
+
 import { ArrowRight } from "lucide-react";
-import type { HighlightProject } from "@/lib/types/page-home";
 import { techIconMap } from "@/lib/iconMap";
+import type { HighlightProject } from "@/lib/types/page-home";
+import { getSkillIconUrl } from "@/components/ui/tool-icons-grid/skills";
 
 type Props = {
   project: HighlightProject

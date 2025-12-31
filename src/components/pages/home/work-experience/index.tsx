@@ -1,9 +1,15 @@
-import { experiences } from "@/lib/experiences";
 import { ExperienceItem } from "./experience-item";
 import { SectionTitle } from "@/components/ui/section-title";
 
 
-export function WorkExperience() {
+import type { WorkExperience as WorkExperienceType } from "@/lib/types/page-home";
+
+export type WorkExperienceProps = {
+  data: WorkExperienceType[];
+};
+
+
+export function WorkExperience({ data }: WorkExperienceProps) {
   return (
     <section id="experiencias" className="py-12">
       <div className="container">
@@ -21,8 +27,8 @@ export function WorkExperience() {
               <div className="absolute left-14 top-0 bottom-0 w-px bg-gray-800/30" />
 
               <div className="flex flex-col gap-10">
-                {experiences.map((exp, idx) => (
-                  <ExperienceItem key={exp.company} exp={exp} idx={idx} />
+                {data.map((exp, idx) => (
+                  <ExperienceItem key={`${exp.company}-${idx}`} exp={exp} idx={idx} />
                 ))}
               </div>
             </div>

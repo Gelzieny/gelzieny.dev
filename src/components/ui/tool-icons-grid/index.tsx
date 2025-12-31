@@ -1,9 +1,10 @@
 "use client";
 
-import { techDisplayNameMap, techIconMap } from "@/lib/iconMap";
 import Image from "next/image";
 import { ComponentProps, useEffect, useState } from "react";
+
 import { getSkillIconUrl } from "./skills";
+import { techDisplayNameMap, techIconMap } from "@/lib/iconMap";
 
 type TechBadgeProps = ComponentProps<"div"> & {
   name: string;
