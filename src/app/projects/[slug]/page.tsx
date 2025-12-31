@@ -1,27 +1,27 @@
-"use client";
-
-import { projects } from "@/lib/projects";
-import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { ProjectDetails } from "@/components/pages/project/project-details";
 import { ProjectSections } from "@/components/pages/project/project-sections";
+import { getProjectBySlug } from "@/lib/services/getProjectBySlug";
 
-export default function ProjectPage() {
-  const { slug } = useParams<{ slug: string }>();
+type ProjectProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
-  const project = projects.find((p) => p.slug === slug);
+export default async function ProjectPage({ params }: ProjectProps) {
+  const { slug } = await params;
+
+  const { project } = await getProjectBySlug(slug);
 
   if (!project) {
-    return (
-      <section className="container py-32 text-center">
-        <h1 className="text-2xl font-semibold">Projeto não encontrado</h1>
-      </section>
-    );
+    notFound();
   }
 
   return (
     <>
       <ProjectDetails project={project} />
-      <ProjectSections title={project.title} images={project.images?.[0]} />
+      <ProjectSections sections={project.sections} /> 
     </>
   );
 }

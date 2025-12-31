@@ -1,10 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { projects } from "@/lib/projects";
 import { ProjectCard } from "@/components/pages/Projects/projects-list/project-card";
+import type { Project } from "@/lib/types/project";
 
-export function ProjectsList(){
+
+export type ProjectsListProps = {
+  projects: Project[];
+};
+
+
+export function ProjectsList({ projects }: ProjectsListProps){
   const [filter, setFilter] = useState<"all" | "frontend" | "backend">("all");
 
   const filtered = projects.filter((p) => {

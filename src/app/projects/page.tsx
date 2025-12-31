@@ -1,11 +1,15 @@
+import { getProjectPage } from "@/lib/services/getProjectPage";
 import { ProjectsList } from "@/components/pages/Projects/projects-list";
 import { PageIntroduction } from "@/components/pages/Projects/page-introduction";
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const { projects } = await getProjectPage()
+
+
   return (
     <>
       <PageIntroduction />
-      <ProjectsList />    
+      <ProjectsList projects={projects}/>    
     </>
   );
 }
