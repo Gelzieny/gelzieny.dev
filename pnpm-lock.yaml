@@ -11,6 +11,9 @@ importers:
       '@graphcms/rich-text-react-renderer':
         specifier: ^0.6.2
         version: 0.6.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@graphcms/rich-text-types':
+        specifier: ^0.5.1
+        version: 0.5.1
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.69.0(react@19.2.0))

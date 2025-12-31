@@ -1,12 +1,22 @@
 "use client";
-import { useState, useEffect } from "react";
 
-const WORDS = [
-  "Software Developer",
-  "Full Stack Developer",
-];
+import { useState, useEffect, useMemo } from "react";
 
-export function AnimatedText() {
+type FunctionItem = {
+  name: string
+}
+
+type AnimatedTextProps = {
+  functions: FunctionItem[]
+}
+
+
+export function AnimatedText({ functions }: AnimatedTextProps) {
+  const WORDS = useMemo(
+    () => functions.map(fn => fn.name),
+    [functions]
+  )
+  
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);

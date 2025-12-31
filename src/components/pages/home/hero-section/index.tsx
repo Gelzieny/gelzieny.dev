@@ -1,9 +1,18 @@
-import { AnimatedText } from "@/components/animated-text";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
-export function HeroSection() {
+import { Button } from "@/components/ui/button";
+import { RichText } from "@/components/ui/rich-text";
+import { AnimatedText } from "@/components/animated-text";
+import type { HeroSectionData } from "@/lib/types/hero-section";
+
+
+type HeroSectionProps = {
+  data: HeroSectionData
+}
+
+export function HeroSection({ data }: HeroSectionProps) {
+  console.log(data);
   return (
     <section
       id="hero"
@@ -12,7 +21,7 @@ export function HeroSection() {
       <div className="container flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
         <div className="flex-1 text-center lg:text-left">
           <h2 className=" text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-tight">
-            <AnimatedText />
+            <AnimatedText functions={data.functions} />
           </h2>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-extrabold leading-tight">
             <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
@@ -24,10 +33,9 @@ export function HeroSection() {
             <span>Gelzieny R. Martins</span>
           </h1>
 
-          <p className="mt-4 text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-lg mx-auto lg:mx-0">
-            Desenvolvedora Full Stack especializada em React, Next.js, Python,
-            APIs e soluções modernas para o setor público.
-          </p>
+          <div className="mt-4 text-base sm:text-lg max-w-lg mx-auto lg:mx-0">
+            <RichText content={data.introduction.raw} />
+          </div>
 
           <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4">
             <Link href="#contato">
@@ -50,7 +58,7 @@ export function HeroSection() {
         <div className="flex-1 flex justify-center lg:justify-end">
           <div className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] lg:w-[320px] lg:h-[320px] rounded-3xl overflow-hidden bg-neutral-800/20 flex items-center justify-center">
             <Image
-              src="/images/user.jpg"
+              src={data.profilePicture.url}
               alt="Foto de Perfil"
               width={350}
               height={350}
