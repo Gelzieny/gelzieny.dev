@@ -9,12 +9,12 @@ export const RichText = ({ renderers, ...props }: RichTextProps) => {
       {...props}
       renderers={{
         p: ({ children }) => (
-          <p className="mt-3 text-gray-600 dark:text-gray-400 text-base leading-relaxed">
+          <p className="mt-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
             {children}
           </p>
         ),
         bold: ({ children }) => (
-          <strong className="text-gray-50 font-medium">
+          <strong className="font-semibold text-purple-500">
             {children}
           </strong>
         ),

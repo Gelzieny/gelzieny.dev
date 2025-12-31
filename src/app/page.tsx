@@ -18,7 +18,7 @@ export default async function Home() {
           profilePicture: page.profilePicture,
         }}
       />
-      <AboutMe />
+      <AboutMe data={page.aboutMe} />
       <ProjectsSection />
       <WorkExperience />
     </>

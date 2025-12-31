@@ -20,7 +20,7 @@ export async function getHomePage() {
             url
           }
           description {
-            html
+            raw
           }
           aboutTechnologies {
             name

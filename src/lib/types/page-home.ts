@@ -1,5 +1,8 @@
+// ==============================
 // Tipos auxiliares
-export type RichTextRaw = {
+// ==============================
+
+export type RichTextContent = {
   raw: {
     children: any[]
   }
@@ -17,29 +20,19 @@ export type HomeFunction = {
   name: string
 }
 
-export type HomeIntroduction = {
-  raw: any
-}
-
 export type AboutTechnology = {
   name: string
 }
 
-export type ProfileAboutMeImage = {
-  url: string
-}
-
 export type HomeAboutMe = {
-  profileAboutMe: ProfileAboutMeImage
-  description: {
-    html: string
-  }
+  profileAboutMe: ImageAsset
+  description: RichTextContent
   aboutTechnologies: AboutTechnology[]
 }
 
 export type HomePage = {
   functions: HomeFunction[]
-  introduction: HomeIntroduction
+  introduction: RichTextContent
   profilePicture: ImageAsset
   aboutMe: HomeAboutMe
 }

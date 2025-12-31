@@ -12,7 +12,6 @@ type HeroSectionProps = {
 }
 
 export function HeroSection({ data }: HeroSectionProps) {
-  console.log(data);
   return (
     <section
       id="hero"

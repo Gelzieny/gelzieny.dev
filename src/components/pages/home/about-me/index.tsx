@@ -1,14 +1,17 @@
 import Image from "next/image";
 import { SectionTitle } from "@/components/ui/section-title";
 import { ToolIconsGrid } from "@/components/ui/tool-icons-grid";
+import type { AboutMeData } from "@/lib/types/about-me";
+import { RichText } from "@/components/ui/rich-text";
 
-const userTechnologies = [
-  { name: "VsCode" },
-  { name: "Python" },
-  { name: "Figma" },
-];
 
-export function AboutMe() {
+type AboutMeProps = {
+  data: AboutMeData
+}
+
+
+export function AboutMe({ data }: AboutMeProps) {
+  console.log(data);
   return (
     <section id="sobre" className="container snap-start scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 py-12 sm:py-16">
       <SectionTitle subtitle="sobre" title="Sobre mim" />
@@ -17,7 +20,7 @@ export function AboutMe() {
         <div className="flex justify-center lg:justify-start">
           <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[360px] lg:h-[360px] rounded-xl overflow-hidden shadow-xl bg-neutral-800/30 dark:bg-neutral-700/30">
             <Image
-              src="/images/profile.jpg"
+              src={data.profileAboutMe.url}
               alt="Foto de Perfil"
               width={500}
               height={500}
@@ -27,36 +30,7 @@ export function AboutMe() {
         </div>
 
         <div className="flex flex-col justify-center text-center lg:text-left">
-          <p className="mt-2 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl text-justify">
-            Sou{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              Gelzieny R. Martins
-            </span>
-            , desenvolvedora
-            <span className="font-semibold"> Full Stack</span> com foco em
-            <span className="font-semibold text-purple-500">
-              {" "}
-              React, Next.js, TypeScript
-            </span>{" "}
-            e
-            <span className="font-semibold text-purple-500">
-              {" "}
-              Python / FastAPI
-            </span>
-            .
-          </p>
-
-          <p className="mt-2 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl text-justify">
-            Atuo na <span className="font-semibold text-purple-500">LIGO</span>,
-            laboratório de inovação do Governo de Goiás, desenvolvendo APIs,
-            automatizações com IA, dashboards e soluções digitais modernas.
-          </p>
-
-          <p className="mt-2 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl text-justify">
-            Tenho mais de 5 anos de experiência criando sistemas eficientes,
-            acessíveis e orientados ao impacto real em pessoas, equipes e
-            serviços públicos.
-          </p>
+          <RichText content={data.description.raw} />
 
           <div className="mt-8">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
@@ -64,7 +38,7 @@ export function AboutMe() {
             </h3>
 
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              {userTechnologies.map(({ name }, index) => (
+              {data.aboutTechnologies.map(({ name }, index) => (
                 <ToolIconsGrid
                   key={name}
                   name={name}
