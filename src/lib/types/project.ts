@@ -1,14 +1,4 @@
-export type ElementNode = {
-  type: string
-  children?: Array<ElementNode | { text: string; [key: string]: unknown }>
-  [key: string]: unknown
-}
-
-export type RichTextContent = {
-  raw: {
-    children: Array<ElementNode>
-  }
-}
+import type { RichTextContent } from "@graphcms/rich-text-types";
 
 export type ImageAsset = {
   url: string
@@ -29,7 +19,9 @@ export type Project = {
   slug: string
   title: string
   shortDescription: string
-  description: RichTextContent
+  description: {
+    raw: RichTextContent
+  }
   type: ProjectType
   githubUrl: string | null
   liveProjectUrl: string | null
