@@ -1,6 +1,12 @@
+export type ElementNode = {
+  type: string
+  children?: Array<ElementNode | { text: string; [key: string]: unknown }>
+  [key: string]: unknown
+}
+
 export type RichTextContent = {
   raw: {
-    children: unknown[]
+    children: Array<ElementNode>
   }
 }
 
