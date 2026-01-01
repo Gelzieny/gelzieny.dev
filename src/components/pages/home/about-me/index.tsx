@@ -30,7 +30,10 @@ export function AboutMe({ data }: AboutMeProps) {
         </div>
 
         <div className="flex flex-col justify-center text-center lg:text-left">
-          <RichText content={data.description.raw} />
+          <span className="text-justify">
+            <RichText content={data.description.raw} />
+          </span>
+          
 
           <div className="mt-8">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
