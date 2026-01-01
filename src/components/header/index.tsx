@@ -14,7 +14,7 @@ const NAV_ITEMS = [
 ];
 
 export function Header() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, mounted } = useTheme();
   const [open, setOpen] = useState(false);
 
   return (
@@ -40,8 +40,13 @@ export function Header() {
           <button
             onClick={toggleTheme}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Alternar tema"
           >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            {mounted ? (
+              theme === "dark" ? <Sun size={20} /> : <Moon size={20} />
+            ) : (
+              <div className="w-5 h-5" />
+            )}
           </button>
 
           <button

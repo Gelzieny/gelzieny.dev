@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
+
   images: {
+    qualities: [75, 100],
+
     remotePatterns: [
       {
         protocol: "https",
@@ -12,10 +14,6 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "github.com",
-      },
-      {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
       },
       {
         protocol: "https",
