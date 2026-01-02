@@ -42,6 +42,7 @@ export const techIconMap: Record<string, string> = {
   Figma: "figma",
   Cisco: "cisco",
   Kubernetes: "kubernetes",
+  StyledComponents: "styledcomponents"
 };
 
 export const techDisplayNameMap: Record<string, string> = {
