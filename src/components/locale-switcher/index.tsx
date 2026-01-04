@@ -1,20 +1,22 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
-import { locales, localeNames, localeFlags, type Locale } from '@/lib/i18n/config'
+import {
+  locales,
+  localeNames,
+  localeFlags,
+  localeLabels,
+  type Locale
+} from '@/lib/i18n/config'
 
 export function LocaleSwitcher({ currentLocale }: { currentLocale: Locale }) {
   const pathname = usePathname()
   const router = useRouter()
 
   const handleLocaleChange = (newLocale: Locale) => {
-    // Remove o locale atual do pathname
-    const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, '')
-    
-    // Adiciona o novo locale
+    const pathWithoutLocale = pathname.replace(/^\/(pt|en)/, '')
     const newPath = `/${newLocale}${pathWithoutLocale || ''}`
-    
-    // Define o cookie e navega
+
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`
     router.push(newPath)
   }
@@ -33,7 +35,7 @@ export function LocaleSwitcher({ currentLocale }: { currentLocale: Locale }) {
           aria-label={`Switch to ${localeNames[locale]}`}
         >
           <span className="text-lg">{localeFlags[locale]}</span>
-          <span className="text-sm">{locale === 'pt-BR' ? 'PT' : 'EN'}</span>
+          <span className="text-sm">{localeLabels[locale]}</span>
         </button>
       ))}
     </div>

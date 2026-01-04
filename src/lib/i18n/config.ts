@@ -55,3 +55,8 @@ export function toLocale(value: string | undefined): Locale {
 export function getCmsLocale(locale: Locale): string {
   return CMS_LOCALE_MAP[locale];
 }
+
+export const localeLabels: Record<Locale, string> = {
+  pt: "PT",
+  en: "EN",
+};
