@@ -18,7 +18,7 @@ export function LocaleSwitcher({ currentLocale }: { currentLocale: Locale }) {
     const newPath = `/${newLocale}${pathWithoutLocale || ''}`
 
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`
-    router.push(newPath)
+    router.push(newPath) 
   }
 
   return (
