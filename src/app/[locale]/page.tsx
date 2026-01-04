@@ -3,9 +3,17 @@ import { AboutMe } from "@/components/pages/home/about-me";
 import { HeroSection } from "@/components/pages/home/hero-section";
 import { WorkExperience } from "@/components/pages/home/work-experience";
 import { ProjectsSection } from "@/components/pages/home/projects-section";
+import type { Locale } from "@/lib/i18n/config";
 
-export default async function Home() {
-  const { page } = await getHomePage()
+interface HomeProps {
+  params: Promise<{
+    locale: Locale;
+  }>;
+}
+
+export default async function Home({ params }: HomeProps) {
+  const { locale } = await params;
+  const { page } = await getHomePage(locale);
 
   return (
     <>
@@ -20,5 +28,5 @@ export default async function Home() {
       <ProjectsSection data={page.highlightProjects} />
       <WorkExperience data={page.workExperiences} />
     </>
-  )
+  );
 }

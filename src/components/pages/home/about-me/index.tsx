@@ -12,6 +12,8 @@ type AboutMeProps = {
 
 
 export function AboutMe({ data }: AboutMeProps) {
+  const imageUrl = data.profileAboutMe?.url ;
+  
   return (
     <section id="sobre" className="container snap-start scroll-mt-20 sm:scroll-mt-24 lg:scroll-mt-28 py-12 sm:py-16">
       <SectionTitle subtitle="sobre" title="Sobre mim" />
@@ -20,7 +22,7 @@ export function AboutMe({ data }: AboutMeProps) {
         <div className="flex justify-center lg:justify-start">
           <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[360px] lg:h-[360px] rounded-xl overflow-hidden shadow-xl bg-neutral-800/30 dark:bg-neutral-700/30">
             <Image
-              src={data.profileAboutMe.url}
+              src={imageUrl}
               alt="Foto de Perfil"
               width={500}
               height={500}

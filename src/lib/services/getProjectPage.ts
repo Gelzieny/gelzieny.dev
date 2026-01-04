@@ -1,11 +1,16 @@
 import { hygraphRequest } from "../hygraph"
 import type { ProjectsResponse } from "../types/project"
+import type { Locale } from "../i18n/config"
+import { hygraphLocaleMap } from "../i18n/hygraph-locale-map";
 
 
-export async function getProjectPage() {
+export async function getProjectPage(locale: Locale) {
+
+  const hygraphLocale = hygraphLocaleMap[locale];
+
   const query = `
     query ProjectsQuery {
-      projects {
+      projects(locales: [${hygraphLocale}]) {
         slug
         title
         shortDescription

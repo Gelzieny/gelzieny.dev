@@ -1,11 +1,15 @@
 import { hygraphRequest } from "../hygraph"
 import type { HomePageResponse } from "../types/page-home"
+import type { Locale } from "../i18n/config"
+import { hygraphLocaleMap } from "../i18n/hygraph-locale-map";
 
 
-export async function getHomePage() {
+export async function getHomePage(locale: Locale) {
+  const hygraphLocale = hygraphLocaleMap[locale];
+
   const query = `
     query MyQuery {
-      page(where: { slug: "home" }) {
+      page(where: { slug: "home" }, locales: [${hygraphLocale}]) {
         functions {
           name
         }

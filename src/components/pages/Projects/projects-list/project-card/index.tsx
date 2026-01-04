@@ -7,6 +7,7 @@ import Image from "next/image";
 import { getSkillIconUrl } from "@/components/ui/tool-icons-grid/skills";
 import type { Project } from "@/lib/types/project";
 import { techDisplayNameMap, techIconMap } from "@/lib/iconMap";
+import { useLocalizedHref } from "@/lib/hooks/useLocale";
 
 type Props = {
   project: Project;
@@ -14,6 +15,7 @@ type Props = {
 
 export function ProjectCard({ project }: Props) {
   const {thumbnail, title, shortDescription, technologies, slug} = project;
+  const projectHref = useLocalizedHref(`projects/${slug}`);
 
   return (
     <div className="w-full">
@@ -52,7 +54,7 @@ export function ProjectCard({ project }: Props) {
               </div>
 
 
-              <Link href={`/projects/${slug}`} className="text-sm font-semibold text-purple-500 hover:underline">
+              <Link href={projectHref} className="text-sm font-semibold text-purple-500 hover:underline">
                 Ver detalhes
               </Link>
             </div>

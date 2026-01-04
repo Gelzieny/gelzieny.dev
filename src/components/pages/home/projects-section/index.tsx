@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -5,6 +7,7 @@ import { HomeProjectCard } from "./project-card";
 import { SectionTitle } from "@/components/ui/section-title";
 import type { HighlightProject } from "@/lib/types/page-home";
 import { HorizontalDivider } from "@/components/ui/horizontal-diver";
+import { useLocalizedHref } from "@/lib/hooks/useLocale";
 
 
 export type ProjectsSectionProps = {
@@ -13,6 +16,8 @@ export type ProjectsSectionProps = {
 
 
 export function ProjectsSection({ data }: ProjectsSectionProps) {
+  const projectsHref = useLocalizedHref('projects');
+  
   return (
     <section id="projects" className="py-12">
       <div className="container">
@@ -32,7 +37,7 @@ export function ProjectsSection({ data }: ProjectsSectionProps) {
 
         <p className="flex items-center gap-1.5">
           <span className="text-gray-400">Se interessou?</span>
-          <Link href="/projects" className="inline-flex hover:text-purple-500 transition-colors duration-300 font-medium">
+          <Link href={projectsHref} className="inline-flex hover:text-purple-500 transition-colors duration-300 font-medium">
             Ver todos os projetos
             <ArrowRight className="ml-1 "/>
           </Link>

@@ -2,13 +2,17 @@
 
 import { useState } from "react";
 import type { SocialMedia } from "@/lib/types/page-home";
+import type { Locale } from "@/lib/i18n/config";
+import { contactTranslations } from "@/lib/i18n/contact-translations";
 
 
 export type ContactProps = {
-  socialMedias: SocialMedia[]
+  socialMedias: SocialMedia[];
+  locale: Locale;
 }
 
-export function Contact({ socialMedias }: ContactProps) {
+export function Contact({ socialMedias, locale }: ContactProps) {
+  const t = contactTranslations[locale];
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -25,14 +29,14 @@ export function Contact({ socialMedias }: ContactProps) {
       });
 
       if (res.ok) {
-        setStatus('Mensagem enviada! Obrigada.');
+        setStatus(t.messages.success);
         setForm({ name: '', email: '', phone: '', subject: '', message: '' });
       } else {
         const json = await res.json();
-        setStatus(json?.error || 'Erro ao enviar mensagem.');
+        setStatus(json?.error || t.messages.error);
       }
     } catch (err) {
-      setStatus('Erro de rede. Tente novamente.');
+      setStatus(t.messages.networkError);
     } finally {
       setLoading(false);
     }
@@ -43,9 +47,11 @@ export function Contact({ socialMedias }: ContactProps) {
 
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Vamos falar sobre oportunidades</h3>
-          <p className="text-gray-700 dark:text-gray-300">Atualmente estou aberta a novas oportunidades e colaborações.</p>
-          <p className="text-gray-700 dark:text-gray-300">Seja para tirar dúvidas, propor um projeto ou apenas dizer um <span className="font-bold text-purple-800 dark:text-purple-500">"olá"</span>, fique à vontade para entrar em contato — responderei o mais breve possível.</p>
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{t.heading}</h3>
+          <p className="text-gray-700 dark:text-gray-300">{t.subtitle1}</p>
+          <p className="text-gray-700 dark:text-gray-300">
+            {t.subtitle2} <span className="font-bold text-purple-800 dark:text-purple-500">"{t.highlight}"</span>{t.subtitle2End}
+          </p>
 
           <div className="mt-6 flex items-center gap-3">
             {socialMedias.map(({ name, url, iconSvg }) => (
@@ -75,23 +81,23 @@ export function Contact({ socialMedias }: ContactProps) {
 
         <form onSubmit={handleSubmit} className="w-full max-w-xl ml-auto">
           <div className="grid grid-cols-1 gap-2">
-            <label className="text-sm text-gray-700 dark:text-gray-300">Nome</label>
-            <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} type="text" name="name" placeholder="Seu nome" className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3" required />
+            <label className="text-sm text-gray-700 dark:text-gray-300">{t.form.name}</label>
+            <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} type="text" name="name" placeholder={t.form.namePlaceholder} className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3" required />
 
-            <label className="text-sm text-gray-700 dark:text-gray-300">Email</label>
-            <input value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} type="email" name="email" placeholder="you@example.com" className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3" required />
+            <label className="text-sm text-gray-700 dark:text-gray-300">{t.form.email}</label>
+            <input value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} type="email" name="email" placeholder={t.form.emailPlaceholder} className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3" required />
 
-            <label className="text-sm text-gray-700 dark:text-gray-300">Telefone</label>
-            <input value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} type="tel" name="phone" placeholder="(11) 99999-9999" className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3" />
+            <label className="text-sm text-gray-700 dark:text-gray-300">{t.form.phone}</label>
+            <input value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} type="tel" name="phone" placeholder={t.form.phonePlaceholder} className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3" />
 
-            <label className="text-sm text-gray-700 dark:text-gray-300">Assunto </label>
-            <input value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} type="text" name="subject" placeholder="Assunto" className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3" required />
+            <label className="text-sm text-gray-700 dark:text-gray-300">{t.form.subject}</label>
+            <input value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} type="text" name="subject" placeholder={t.form.subjectPlaceholder} className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3" required />
 
-            <label className="text-sm text-gray-700 dark:text-gray-300">Mensagem</label>
-            <textarea value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} name="message" rows={6} placeholder="Vamos conversar sobre..." className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3 resize-none" required />
+            <label className="text-sm text-gray-700 dark:text-gray-300">{t.form.message}</label>
+            <textarea value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} name="message" rows={6} placeholder={t.form.messagePlaceholder} className="w-full rounded-md border border-gray-700 bg-transparent px-4 py-3 resize-none" required />
 
-            <button disabled={loading} type="submit" className="mt-2 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-md">
-              {loading ? 'Enviando...' : 'Enviar Mensagem'}
+            <button disabled={loading} type="submit" className="mt-2 w-full bg-linear-to-r from-purple-500 to-pink-500 text-white py-3 rounded-md">
+              {loading ? t.form.submitting : t.form.submit}
             </button>
 
             {status && <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{status}</p>}

@@ -12,6 +12,9 @@ type HeroSectionProps = {
 }
 
 export function HeroSection({ data }: HeroSectionProps) {
+  console.log('data', data);
+  const imageUrl = data.profilePicture?.url ;
+  
   return (
     <section
       id="hero"
@@ -57,7 +60,7 @@ export function HeroSection({ data }: HeroSectionProps) {
         <div className="flex-1 flex justify-center lg:justify-end">
           <div className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] lg:w-[320px] lg:h-[320px] rounded-3xl overflow-hidden bg-neutral-800/20 flex items-center justify-center">
             <Image
-              src={data.profilePicture.url}
+              src={imageUrl}
               alt="Foto de Perfil"
               width={350}
               height={350}

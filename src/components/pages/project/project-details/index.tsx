@@ -1,3 +1,4 @@
+"use client";
 
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
@@ -7,6 +8,7 @@ import { RichText } from "@/components/ui/rich-text";
 import { SectionTitle } from "@/components/ui/section-title";
 import { techDisplayNameMap, techIconMap } from "@/lib/iconMap";
 import { getSkillIconUrl } from "@/components/ui/tool-icons-grid/skills";
+import { useLocalizedHref } from "@/lib/hooks/useLocale";
 
 type ProjectDetailsProps = {
   project: Project
@@ -15,6 +17,7 @@ type ProjectDetailsProps = {
 export function ProjectDetails({ project }: ProjectDetailsProps) {
 
   const {title, technologies,  githubUrl, liveProjectUrl, description} = project;
+  const projectsHref = useLocalizedHref('projects');
 
   return (
     <section className="w-full sm:min-h-[450px] flex flex-col items-center justify-end relative pb-10 sm:pb-24 py-24 px-6 overflow-hidden">
@@ -67,7 +70,7 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
           </a>
         )}
       </div>
-      <Link href="/projects" className="group inline-flex items-center gap-2">
+      <Link href={projectsHref} className="group inline-flex items-center gap-2">
         <ArrowLeft
           size={16}
           className="transition-transform group-hover:-translate-x-1"

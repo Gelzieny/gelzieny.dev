@@ -8,12 +8,20 @@ import { ArrowRight } from "lucide-react";
 import { techIconMap } from "@/lib/iconMap";
 import type { HighlightProject } from "@/lib/types/page-home";
 import { getSkillIconUrl } from "@/components/ui/tool-icons-grid/skills";
+import { useLocalizedHref } from "@/lib/hooks/useLocale";
 
 type Props = {
   project: HighlightProject
 };
 
 export function HomeProjectCard({ project }: Props) {
+  const projectHref = useLocalizedHref(`projects/${project.slug}`);
+  
+  // Retorna null se não tiver thumbnail (conteúdo não traduzido)
+  if (!project.thumbnail) {
+    return null;
+  }
+  
   return (
     <article className="flex gap-6 lg:gap-10 flex-col lg:flex-row items-start">
       <div className="w-full h-[180px] sm:h-[240px] lg:w-[420px] lg:min-h-full rounded-lg overflow-hidden flex-shrink-0">
@@ -55,7 +63,7 @@ export function HomeProjectCard({ project }: Props) {
 
         <div className="mt-4">
           <Link
-            href={`/projects/${project.slug}`}
+            href={projectHref}
             className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-purple-500 transition-colors duration-300 font-medium"
           >
             Ver projeto

@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactCompiler: true,
 
+  experimental: {
+    // Suporte para rotas dinâmicas com i18n
+    ppr: false,
+  },
+
   images: {
     qualities: [75, 100],
 
