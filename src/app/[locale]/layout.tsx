@@ -3,20 +3,21 @@ import { Header } from "@/components/header";
 import { BubblesBackground } from "@/components/bubbles-background";
 import { Contact } from "@/components/pages/home/contact";
 import { getHomePage } from "@/lib/services/getHomePage";
-import type { Locale } from "@/lib/i18n/config";
-import { locales } from "@/lib/i18n/config";
+import { locales, type Locale } from "@/lib/i18n/config";
 
 type LocaleLayoutProps = {
   children: React.ReactNode;
   params: Promise<{
-    locale: (typeof locales)[number];
+    locale: string;
   }>;
-}
+};
 
 export async function generateStaticParams() {
-  return locales.map((locale) => ({
-    locale,
-  }));
+  return locales.map((locale) => ({ locale }));
+}
+
+function toLocale(value: string): Locale {
+  return locales.includes(value as Locale) ? (value as Locale) : "pt";
 }
 
 export default async function LocaleLayout({
@@ -24,14 +25,16 @@ export default async function LocaleLayout({
   params,
 }: LocaleLayoutProps) {
   const { locale } = await params;
-  const { page } = await getHomePage(locale);
+  const safeLocale = toLocale(locale);
+
+  const { page } = await getHomePage(safeLocale);
 
   return (
     <ThemeProvider>
       <BubblesBackground />
-      <Header locale={locale} />
+      <Header locale={safeLocale} />
       {children}
-      <Contact socialMedias={page.socialMedias} locale={locale} />
+      <Contact socialMedias={page.socialMedias} locale={safeLocale} />
     </ThemeProvider>
   );
 }

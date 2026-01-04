@@ -12,7 +12,6 @@ type HeroSectionProps = {
 }
 
 export function HeroSection({ data }: HeroSectionProps) {
-  console.log('data', data);
   const imageUrl = data.profilePicture?.url ;
   
   return (

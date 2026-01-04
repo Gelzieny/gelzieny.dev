@@ -6,7 +6,7 @@ type NavItem = {
 };
 
 export const navTranslations: Record<Locale, NavItem[]> = {
-  "pt-BR": [
+  pt: [
     { label: "Home", href: "#hero" },
     { label: "Projetos", href: "projects" },
     { label: "Contato", href: "#contato" },

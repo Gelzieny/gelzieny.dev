@@ -3,17 +3,20 @@ import { AboutMe } from "@/components/pages/home/about-me";
 import { HeroSection } from "@/components/pages/home/hero-section";
 import { WorkExperience } from "@/components/pages/home/work-experience";
 import { ProjectsSection } from "@/components/pages/home/projects-section";
-import { locales } from "@/lib/i18n/config";
+import { toLocale } from "@/lib/i18n/config";
 
 type HomeProps = {
   params: Promise<{
-    locale: (typeof locales)[number];
+    locale: string;
   }>;
-}
+};
 
 export default async function Home({ params }: HomeProps) {
   const { locale } = await params;
-  const { page } = await getHomePage(locale);
+
+  const safeLocale = toLocale(locale);
+
+  const { page } = await getHomePage(safeLocale);
 
   return (
     <>
