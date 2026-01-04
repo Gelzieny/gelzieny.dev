@@ -3,11 +3,11 @@ import { AboutMe } from "@/components/pages/home/about-me";
 import { HeroSection } from "@/components/pages/home/hero-section";
 import { WorkExperience } from "@/components/pages/home/work-experience";
 import { ProjectsSection } from "@/components/pages/home/projects-section";
-import type { Locale } from "@/lib/i18n/config";
+import { locales } from "@/lib/i18n/config";
 
-interface HomeProps {
+type HomeProps = {
   params: Promise<{
-    locale: Locale;
+    locale: (typeof locales)[number];
   }>;
 }
 

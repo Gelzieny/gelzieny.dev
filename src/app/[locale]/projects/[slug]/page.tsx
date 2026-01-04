@@ -4,13 +4,12 @@ import { ProjectDetails } from "@/components/pages/project/project-details";
 import { ProjectSections } from "@/components/pages/project/project-sections";
 import { getProjectBySlug } from "@/lib/services/getProjectBySlug";
 import { getProjectPage } from "@/lib/services/getProjectPage";
-import type { Locale } from "@/lib/i18n/config";
 import { locales } from "@/lib/i18n/config";
 
 type ProjectProps = {
   params: Promise<{
     slug: string;
-    locale: Locale;
+    locale: (typeof locales)[number];
   }>;
 };
 

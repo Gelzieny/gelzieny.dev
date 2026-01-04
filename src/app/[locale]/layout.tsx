@@ -6,10 +6,10 @@ import { getHomePage } from "@/lib/services/getHomePage";
 import type { Locale } from "@/lib/i18n/config";
 import { locales } from "@/lib/i18n/config";
 
-interface LocaleLayoutProps {
+type LocaleLayoutProps = {
   children: React.ReactNode;
   params: Promise<{
-    locale: Locale;
+    locale: (typeof locales)[number];
   }>;
 }
 
