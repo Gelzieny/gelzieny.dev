@@ -40,5 +40,5 @@ export async function getProjectBySlug(slug: string, locale: Locale) {
     }
   `;
 
-  return hygraphRequest<ProjectBySlugResponse>(query, { slug });
+  return hygraphRequest<ProjectBySlugResponse>(query, { slug }, ['project', `project-${slug}`]);
 }

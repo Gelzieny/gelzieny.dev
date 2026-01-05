@@ -39,5 +39,5 @@ export async function getProjectPage(locale: Locale) {
     }
   `
 
-  return hygraphRequest<ProjectsResponse>(query)
+  return hygraphRequest<ProjectsResponse>(query, {}, ['projects', `projects-${locale}`])
 }    

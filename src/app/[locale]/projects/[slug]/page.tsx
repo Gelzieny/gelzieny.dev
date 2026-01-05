@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { ProjectDetails } from "@/components/pages/project/project-details";
 import { ProjectSections } from "@/components/pages/project/project-sections";
 import { getProjectBySlug } from "@/lib/services/getProjectBySlug";
-import { getProjectPage } from "@/lib/services/getProjectPage";
+import { getAllProjects } from "@/lib/services/getAllProjects";
 import { locales } from "@/lib/i18n/config";
 
 type ProjectProps = {
@@ -14,18 +14,23 @@ type ProjectProps = {
 };
 
 export async function generateStaticParams() {
-  const allParams = [];
-  
-  for (const locale of locales) {
-    const { projects } = await getProjectPage(locale);
-    const params = projects.map((project) => ({
-      locale,
-      slug: project.slug,
-    }));
-    allParams.push(...params);
+  try {
+    // Busca todos os projetos de uma vez (todos os locales)
+    const { projects } = await getAllProjects();
+    
+    // Cria os parâmetros para cada combinação de locale + slug
+    const allParams = locales.flatMap((locale) => 
+      projects.map((project) => ({
+        locale,
+        slug: project.slug,
+      }))
+    );
+    
+    return allParams;
+  } catch (error) {
+    console.error("Error in generateStaticParams:", error);
+    return [];
   }
-  
-  return allParams;
 }
 
 export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
