@@ -3,39 +3,39 @@ import type { Metadata } from "next";
 import { ProjectDetails } from "@/components/pages/project/project-details";
 import { ProjectSections } from "@/components/pages/project/project-sections";
 import { getProjectBySlug } from "@/lib/services/getProjectBySlug";
-import { getAllProjects } from "@/lib/services/getAllProjects";
-import { locales } from "@/lib/i18n/config";
+import { toLocale, type Locale } from "@/lib/i18n/config";
+
+/**
+ * Usa ISR para evitar rate limit do Hygraph
+ * Página é gerada sob demanda e cacheada
+ */
+export const revalidate = 3600; // 1 hora
 
 type ProjectProps = {
   params: Promise<{
     slug: string;
-    locale: (typeof locales)[number];
+    locale: string;
   }>;
 };
 
+/**
+ * ❌ NÃO gerar páginas no build
+ * Evita "Too Many Requests" no Hygraph
+ */
 export async function generateStaticParams() {
-  try {
-    // Busca todos os projetos de uma vez (todos os locales)
-    const { projects } = await getAllProjects();
-    
-    // Cria os parâmetros para cada combinação de locale + slug
-    const allParams = locales.flatMap((locale) => 
-      projects.map((project) => ({
-        locale,
-        slug: project.slug,
-      }))
-    );
-    
-    return allParams;
-  } catch (error) {
-    console.error("Error in generateStaticParams:", error);
-    return [];
-  }
+  return [];
 }
 
-export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
+/**
+ * Metadata dinâmica com segurança
+ */
+export async function generateMetadata(
+  { params }: ProjectProps
+): Promise<Metadata> {
   const { slug, locale } = await params;
-  const { project } = await getProjectBySlug(slug, locale);
+  const safeLocale: Locale = toLocale(locale);
+
+  const { project } = await getProjectBySlug(slug, safeLocale);
 
   if (!project) {
     return {
@@ -44,14 +44,14 @@ export async function generateMetadata({ params }: ProjectProps): Promise<Metada
   }
 
   return {
-    title: `${project.title}`,
+    title: project.title,
     description: project.shortDescription,
     openGraph: {
       title: project.title,
       description: project.shortDescription,
       images: [
         {
-          url: project.pageThumbnail?.url || project.thumbnail.url,
+          url: project.pageThumbnail?.url ?? project.thumbnail.url,
           width: 1200,
           height: 630,
           alt: project.title,
@@ -61,10 +61,14 @@ export async function generateMetadata({ params }: ProjectProps): Promise<Metada
   };
 }
 
+/**
+ * Página do projeto (ISR)
+ */
 export default async function ProjectPage({ params }: ProjectProps) {
   const { slug, locale } = await params;
+  const safeLocale: Locale = toLocale(locale);
 
-  const { project } = await getProjectBySlug(slug, locale);
+  const { project } = await getProjectBySlug(slug, safeLocale);
 
   if (!project) {
     notFound();

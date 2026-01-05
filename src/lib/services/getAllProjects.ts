@@ -3,8 +3,8 @@ import type { ProjectsResponse } from "../types/project";
 
 export async function getAllProjects() {
   const query = `
-    query AllProjectsQuery {
-      projects(locales: [pt_BR, en]) {
+    query AllProjects($locales: [Locale!]!) {
+      projects(locales: $locales) {
         slug
         title
         shortDescription
@@ -33,5 +33,11 @@ export async function getAllProjects() {
     }
   `;
 
-  return hygraphRequest<ProjectsResponse>(query, {}, ['all-projects']);
+  return hygraphRequest<ProjectsResponse>(
+    query,
+    {
+      locales: ["pr_BR", "en"], // enums corretos do Hygraph
+    },
+    ["all-projects"]
+  );
 }
