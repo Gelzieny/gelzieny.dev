@@ -1,4 +1,6 @@
 export const techIconMap: Record<string, string> = {
+  Lovable: "lovable",
+  N8N: "n8n",
   Nextjs: "nextjs",
   Vitejs: "vitejs",
   TailwindCss: "tailwindcss",
@@ -46,6 +48,8 @@ export const techIconMap: Record<string, string> = {
 };
 
 export const techDisplayNameMap: Record<string, string> = {
+  Lovable: "lovable",
+  N8N: "n8n",
   Nextjs: "Next.js",
   Cisco: "cisco",
   TailwindCss: "Tailwind CSS",
