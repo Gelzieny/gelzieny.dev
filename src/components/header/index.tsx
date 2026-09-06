@@ -28,9 +28,12 @@ export function Header({ locale }: { locale: Locale }) {
 
         <Link
           href={`/${locale}`}
-          className="text-xl sm:text-3xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent whitespace-nowrap"
+          className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
         >
-          &lt;Gelzieny.dev/&gt;
+          Gelzieny
+          <span className="bg-gradient-to-r from-primary-400 via-secondary-500 to-accent-500 bg-clip-text text-transparent">
+            .dev
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6 lg:ml-auto lg:mr-6">
@@ -41,7 +44,7 @@ export function Header({ locale }: { locale: Locale }) {
 
         <div className="flex items-center gap-3">
           <LocaleSwitcher currentLocale={locale} />
-          
+
           <button
             onClick={toggleTheme}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"

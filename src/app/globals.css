@@ -3,16 +3,64 @@
 @theme {
   --font-sans: var(--font-inter);
   --font-mono: var(--font-plex-mono);
+
+  /* Custom Brand Identity Colors */
+  --color-background: #050816;
+  --color-surface: #0B1120;
+  --color-surface-secondary: #111827;
+  --color-text: #F8FAFC;
+  --color-foreground: #F8FAFC;
+  --color-muted: #94A3B8;
+  --color-border: #1E293B;
+
+  --color-primary: #06B6D4;
+  --color-primary-50: #ecfeff;
+  --color-primary-100: #cffafe;
+  --color-primary-200: #a5f3fc;
+  --color-primary-300: #67e8f9;
+  --color-primary-400: #22d3ee;
+  --color-primary-500: #06b6d4;
+  --color-primary-600: #0891b2;
+  --color-primary-700: #0e7490;
+  --color-primary-800: #155e75;
+  --color-primary-900: #164e63;
+  --color-primary-950: #083344;
+
+  --color-secondary: #3b82f6;
+  --color-secondary-50: #eff6ff;
+  --color-secondary-100: #dbeafe;
+  --color-secondary-200: #bfdbfe;
+  --color-secondary-300: #93c5fd;
+  --color-secondary-400: #60a5fa;
+  --color-secondary-500: #3b82f6;
+  --color-secondary-600: #2563eb;
+  --color-secondary-700: #1d4ed8;
+  --color-secondary-800: #1e40af;
+  --color-secondary-900: #1e3a8a;
+  --color-secondary-950: #172554;
+
+  --color-accent: #a855f7;
+  --color-accent-50: #faf5ff;
+  --color-accent-100: #f3e8ff;
+  --color-accent-200: #e9d5ff;
+  --color-accent-300: #d8b4fe;
+  --color-accent-400: #c084fc;
+  --color-accent-500: #a855f7;
+  --color-accent-600: #9333ea;
+  --color-accent-700: #7e22ce;
+  --color-accent-800: #6b21a8;
+  --color-accent-900: #581c87;
+  --color-accent-950: #3b0764;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  html{
+  html {
     @apply transition-colors duration-300;  
   }
-  body{
-    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  body {
+    @apply bg-white dark:bg-background text-gray-900 dark:text-foreground;
   }
 }
 
@@ -27,7 +75,7 @@
 }
 
 .container {
-  @apply mx-auto w-full max-w-[1200px] px-6
+  @apply mx-auto w-full max-w-[1200px] px-6;
 }
 
 @keyframes fadeUp {
@@ -45,17 +93,16 @@
   animation: fadeUp 0.6s ease-out forwards;
 }
 
-
 *::-webkit-scrollbar {
   width: 8px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #374151;
+  background: var(--color-background);
   border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--color-purple-500);
+  background-color: var(--color-primary-500);
   border-radius: 14px;
 }

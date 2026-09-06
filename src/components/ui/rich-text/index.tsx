@@ -23,9 +23,11 @@ export const RichText = ({ renderers, ...props }: RichTextProps) => {
             {children}
           </ul>
         ),
-        a: ({ children, ...props }) => (
+        a: ({ children, openInNewTab, ...props }) => (
           <a
             {...props}
+            target={openInNewTab ? "_blank" : undefined}
+            rel={openInNewTab ? "noopener noreferrer" : undefined}
             className="hover:text-purple-500 transition-colors underline"
           >
             {children}
